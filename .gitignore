@@ -1,0 +1,4 @@
+*.userprefs
+Library/bin
+Tests/bin
+Tests/test-results
