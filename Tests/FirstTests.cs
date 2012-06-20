@@ -8,24 +8,26 @@ namespace Tests
 	[TestFixture]
 	public class FirstTests
 	{
-		public FirstTests ()
-		{
-		}
+		private First first;
 		
+		[SetUp]
+		public void SetUp ()
+		{
+			first = new First ();
+		}
+
 		[Test]
 		public void CreateInstance ()
 		{
-			var first = new First ();
 			Assert.That (first, Is.Not.Null);
 		}
-		
+
 		[Test]
 		public void CallAMethod ()
 		{
-			var first = new First ();
 			Assert.That (first.Method (), Is.EqualTo ("base"));
 		}
-		
+
 		[Test]
 		public void FirstMock ()
 		{
@@ -35,6 +37,13 @@ namespace Tests
 			first.Expect (f => f.Method ()).Return ("hello");
 			Assert.That (first.Method (), Is.EqualTo ("hello"));
 			mocks.VerifyAll ();
+		}
+		
+		[Test]
+		public void GetCollectionAndConfirmElementIsIncluded ()
+		{
+			Assert.That (first.Collection.Contains("test value"));
+				
 		}
 	}
 }
